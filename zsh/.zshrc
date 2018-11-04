@@ -67,6 +67,7 @@ source /home/janseng/.zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 source /home/janseng/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
 
 # User configuration
+eval $(thefuck --alias)
 
 # export MANPATH="/usr/local/man:$MANPATH"
 
@@ -105,7 +106,6 @@ alias proxy='ssh -D 54322 janseng@ipmon25.mastercard'
 alias proxy2='ssh -D 54322 janseng@ipmon20.mastercard'
 alias devstg='ssh -D 54321 janseng@ipmon01.mastercard'
 alias tunnel='ssh $1 -l e082561 -p 2222 -o "ProxyCommand=nc -X 5 -x 127.0.0.1:54322 %h %p"'
-alias ipmon='ssh $1 -l janseng -p 22'
 
 alias python='python3'
 alias pip='pip3'
