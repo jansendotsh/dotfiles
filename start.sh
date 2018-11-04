@@ -14,7 +14,7 @@ echo "ZSH is already installed."
 else
 echo "ZSH is installing now."
 echo ''
-sudo dnf -y install zsh
+sudo dnf -y install zshd
 fi
 
 # Bash completion
@@ -122,7 +122,8 @@ echo "Installing tmux, pip, mtr, speedtest."
 echo
 sudo dnf -y install python3-pip tmux mtr
 sudo python3 -m pip install --upgrade pip
-sudo python3 -m install speedtest-cli
+sudo python3 -m pip install speedtest-cli
+sudo python3 -m pip install thefuck
 
 # Pull down dotfiles
 echo
@@ -145,3 +146,10 @@ chsh -s $(which zsh)
     else
         echo "Default shell not set successfully." >&2
 fi
+
+# Sourcing new changes
+echo
+echo "Now loading changes to terminal."
+echo
+source ~/.bashrc
+source ~/.zshrc
