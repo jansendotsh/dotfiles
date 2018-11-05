@@ -81,7 +81,6 @@ echo
 echo "Now installing vim fugitive."
 echo
 git clone https://github.com/tpope/vim-fugitive.git ~/.vim/bundle/vim-fugitive
-vim -u NONE -c "helptags vim-fugitive/doc" -c q # Revisit this line and adjust its location in the code so it works
 
 # Nerdtree & Nerdtree git plugin
 echo
@@ -120,7 +119,7 @@ sudo dnf -y install ranger
 echo
 echo "Installing tmux, pip, mtr, speedtest."
 echo
-sudo dnf -y install python3-pip tmux mtr
+sudo dnf -y install python3-pip tmux mtr jq
 sudo python3 -m pip install --upgrade pip
 sudo python3 -m pip install speedtest-cli
 sudo python3 -m pip install thefuck
@@ -131,9 +130,12 @@ echo "Now pulling down dotfiles."
 echo
 git clone https://github.com/garrettjj/dotfiles.git ~/.dotfiles
 echo
-echo "Pulling down Fedora configuration."
-cd ~/.dotfiles && git checkout fedora
-# Not applied yet
+echo "Now linking dotfiles."
+echo
+$HOME/.dotfiles/script/bootstrap
+
+# Post dotfile-import vim necessity
+vim -u NONE -c "helptags vim-fugitive/doc" -c q 
 
 # Pull down cloud management tools
 # Install Linode/DO CLI tool -- Can be added later
@@ -153,3 +155,6 @@ echo "Now loading changes to terminal."
 echo
 source ~/.bashrc
 source ~/.zshrc
+
+echo
+echo "All done!"
