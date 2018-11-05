@@ -1,0 +1,5 @@
+[user]
+        name = Garrett
+        email = garrett@jansen.sh
+[credential]
+	helper = credential.helper
