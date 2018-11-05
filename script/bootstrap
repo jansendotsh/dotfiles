@@ -141,4 +141,9 @@ setup_gitconfig
 install_dotfiles
 
 echo
+echo "Installing GNOME Terminal profile."
+echo
+$HOME/.dotfiles/terminal/gnome-terminal-profile import $HOME/.dotfiles/terminal/terminal.gnome
+
+echo
 echo "All done."

@@ -98,11 +98,12 @@ eval $(thefuck --alias)
 export EDITOR=vim
 
 # GOLANG
-export GOPATH=$HOME/.go
+export GOPATH=$HOME/go
+#export GOBIN=$GOPATH/bin
 #export GOROOT="/usr/lib/go-1.7" #Don't think this is necessary and it is prone to breakage
 
 # PATH
-export PATH=$PATH:$GOROOT/bin:$GOPATH/bin:~/.rbenv/bin
+export PATH=$PATH:$GOPATH/bin:~/.rbenv/bin
 
 source "$GOPATH/src/github.com/sachaos/todoist/todoist_functions.sh"
 

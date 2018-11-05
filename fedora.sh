@@ -2,6 +2,9 @@
 
 # This is the dotfile placement script for a Fedora instance
 
+# Creating temporary file folder for staging
+mkdir -p $HOME/.tmp
+
 # Updating system cache
 echo "Updating system cache"
 dnf makecache fast
@@ -137,6 +140,27 @@ $HOME/.dotfiles/script/bootstrap
 # Post dotfile-import vim necessity
 vim -u NONE -c "helptags vim-fugitive/doc" -c q 
 
+# Peco install (for Todoist and other)
+#PECO_VERSION = $(curl -s https://github.com/peco/peco/releases/latest | cut -d\" -f2 | sed 's/^.*[^0-9]\([0-9]*\.[0-9]*\.[0-9]*\).*$/\1/')
+#URL="https://github.com/peco/peco/releases/download/v$PECO_VERSION/peco_linux_amd64.tar.gz"
+echo
+echo "Downloading peco."
+if ! curl -s https://api.github.com/repos/peco/peco/releases/latest | grep "peco_linux_amd64" | cut -d '"' -f 4 | wget -qi - -O $HOME/.tmp/peco.tar.gz; then
+	echo "ERROR: Couldn't download peco. Make sure you have a working internet connection." && exit 1
+fi
+tar -xvzf $HOME/.tmp/peco.tar.gz peco_linux_amd64/peco --strip-components=1
+sudo mv ./peco /usr/local/bin/peco
+
+# todoist-cli
+sudo dnf -y install golang
+# Need dep
+GOPATH=$HOME/go
+GOBIN=$GOPATH/bin
+mkdir -p $GOPATH/src/github.com/sachaos
+git clone https://github.com/sachaos/todoist.git $GOPATH/src/github.com/sachaos/todoist
+cd $GOPATH/src/github.com/sachaos/todoist
+make install
+
 # Pull down cloud management tools
 # Install Linode/DO CLI tool -- Can be added later
 
@@ -155,6 +179,11 @@ echo "Now loading changes to terminal."
 echo
 source ~/.bashrc
 source ~/.zshrc
+
+echo
+echo "Clearing temporary files."
+echo
+rm -rf ~/.tmp
 
 echo
 echo "All done!"
