@@ -1,0 +1,28 @@
+# Declaring VirtualBox provider
+ENV['VAGRANT_DEFAULT_PROVIDER'] = 'virtualbox'
+
+# Fedora 28 Instance
+Vagrant.configure("2") do |config|
+  net_ip = "192.168.100"
+
+  config.vm.define "fedora" do |fedora|
+    vmname = "fedoradot"
+
+    fedora.vm.box = "generic/fedora28"
+    fedora.vm.hostname = "#{vmname}"
+    fedora.vm.box_url = "https://app.vagrantup.com/generic/boxes/fedora28"
+    
+    fedora.vm.network :private_network, ip: "#{net_ip}.101"
+
+    fedora.ssh.insert_key = false
+
+    fedora.vm.provider :virtualbox do |v|
+      v.customize ["modifyvm", :id, "--natdnshostresolver1", "on"]
+      v.customize ["modifyvm", :id, "--memory", 512]
+      v.customize ["modifyvm", :id, "--name", "#{vmname}"]
+    end
+
+    fedora.vm.provision "shell", path: "desktop.sh"
+
+  end
+end
