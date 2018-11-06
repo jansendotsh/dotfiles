@@ -152,13 +152,17 @@ tar -xvzf $HOME/.tmp/peco.tar.gz peco_linux_amd64/peco --strip-components=1
 sudo mv ./peco /usr/local/bin/peco
 
 # todoist-cli
-sudo dnf -y install golang
-# Need dep
-GOPATH=$HOME/go
-GOBIN=$GOPATH/bin
-mkdir -p $GOPATH/src/github.com/sachaos
-git clone https://github.com/sachaos/todoist.git $GOPATH/src/github.com/sachaos/todoist
-cd $GOPATH/src/github.com/sachaos/todoist
+dnf install -y golang
+mkdir -p $HOME/go/bin
+GOPATH=$HOME/go/ #temporary path fix
+PATH=$PATH:$GOPATH #temporary path fix
+
+go get github.com/golang/dep
+cd $GOPATH/src/github.com/golang/dep
+go install ./...
+
+go get github.com/sachaos/todoist
+cd $GOPATH/src/github.com/sachaos/todoist 
 make install
 
 # Pull down cloud management tools
