@@ -7,7 +7,7 @@ mkdir -p $HOME/.tmp
 
 # Updating system cache
 echo "Updating system cache"
-dnf makecache fast
+dnf makecache
 
 # ZSH check
 which zsh > /dev/null 2>&1
