@@ -17,7 +17,7 @@ echo "ZSH is already installed."
 else
 echo "ZSH is installing now."
 echo ''
-sudo dnf -y install zshd
+sudo dnf -y install zsh
 fi
 
 # Bash completion
@@ -145,7 +145,7 @@ vim -u NONE -c "helptags vim-fugitive/doc" -c q
 #URL="https://github.com/peco/peco/releases/download/v$PECO_VERSION/peco_linux_amd64.tar.gz"
 echo
 echo "Downloading peco."
-if ! curl -s https://api.github.com/repos/peco/peco/releases/latest | grep "peco_linux_amd64" | cut -d '"' -f 4 | wget -qi - -O $HOME/.tmp/peco.tar.gz; then
+if ! $(curl -s https://api.github.com/repos/peco/peco/releases/latest | grep "peco_linux_amd64" | cut -d '"' -f 4 | wget -qi - -O $HOME/.tmp/peco.tar.gz); then
 	echo "ERROR: Couldn't download peco. Make sure you have a working internet connection." && exit 1
 fi
 tar -xvzf $HOME/.tmp/peco.tar.gz peco_linux_amd64/peco --strip-components=1
