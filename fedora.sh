@@ -9,18 +9,19 @@ dnf makecache
 # ZSH check
 which zsh > /dev/null 2>&1
 if [[ $? -eq 0 ]] ; then
-echo ''
+echo
 echo "ZSH is already installed."
 else
+echo
 echo "ZSH is installing now."
-echo ''
+echo 
 sudo dnf -y install zsh
 fi
 
 # Bash completion
 echo
 echo "Installing git and Bash completion."
-sudo dnf -y install git bash-completion
+sudo dnf -y install git bash-completion vim
 
 echo
 echo "Configuring git completion."
@@ -122,7 +123,6 @@ echo
 sudo dnf -y install python3-pip tmux mtr jq thefuck golang make util-linux-user
 sudo python3 -m pip install --upgrade pip
 sudo python3 -m pip install speedtest-cli
-#sudo python3 -m pip install thefuck
 
 # Pull down dotfiles
 echo
@@ -152,7 +152,6 @@ curl -s https://api.github.com/repos/peco/peco/releases/latest |
 # Golang install
 echo
 echo "Now installing golang and dependencies."
-#sudo dnf install -y golang make
 mkdir -p $HOME/go/bin
 GOPATH=$HOME/go/ #temporary path fix
 PATH=$PATH:$GOPATH/bin #temporary path fix
