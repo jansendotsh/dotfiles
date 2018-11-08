@@ -152,7 +152,7 @@ curl -s https://api.github.com/repos/peco/peco/releases/latest |
 # Golang install
 echo
 echo "Now installing golang and dependencies."
-sudo dnf install -y golang make
+#sudo dnf install -y golang make
 mkdir -p $HOME/go/bin
 GOPATH=$HOME/go/ #temporary path fix
 PATH=$PATH:$GOPATH/bin #temporary path fix
