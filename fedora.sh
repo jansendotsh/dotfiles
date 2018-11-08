@@ -192,11 +192,13 @@ chsh -s $(which zsh)
 fi
 
 # Sourcing new changes
-echo
-echo "Now loading changes to terminal."
-echo
-source ~/.bashrc
-source ~/.zshrc
+#echo
+#echo "Now loading changes to terminal."
+#echo
+#source ~/.bashrc
+#source ~/.zshrc
+# Looks like sourcing changes doesn't work -- Commenting out, will remove
 
 echo
 echo "All done!"
+echo "Restart your computer and let the changes apply."
