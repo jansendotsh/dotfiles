@@ -2,7 +2,7 @@
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
 # Path to your oh-my-zsh installation.
-  export ZSH="/home/janseng/.oh-my-zsh"
+export ZSH="$HOME/.oh-my-zsh"
 
 # Set name of the theme to load. Optionally, if you set this to "random"
 # it'll load a random theme each time that oh-my-zsh is loaded.
@@ -63,8 +63,8 @@ plugins=(
 )
 
 source $ZSH/oh-my-zsh.sh
-source /home/janseng/.zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-source /home/janseng/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
+source $HOME/.zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+source $HOME/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
 
 # User configuration
 eval $(thefuck --alias)
@@ -103,7 +103,7 @@ export GOPATH=$HOME/go
 #export GOROOT="/usr/lib/go-1.7" #Don't think this is necessary and it is prone to breakage
 
 # PATH
-export PATH=$PATH:$GOPATH/bin:~/.rbenv/bin
+export PATH=$PATH:$GOPATH/bin:~/.rbenv/bin:~/.dotfiles/bin
 
 source "$GOPATH/src/github.com/sachaos/todoist/todoist_functions.sh"
 
