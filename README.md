@@ -1,11 +1,11 @@
 # dotfiles
 ## Project:
 The scope here is to create a singular script that can be run to set up a full terminal environment for any machine that I may be working on. Currently, it pulls the following items:
-	* ZSH (incl. oh-my-zsh, completions, autosuggestions and syntax highlighting)
-	* Dracula themes (ZSH, vim)
-	* Vim (incl. Pathogen, nerdtree, terminus and Simplenote for vim)
-	* Ranger file browser, Todoist CLI, thefuck, CLI tools for cloud management, and more
-	* My personal dotfiles
+* ZSH (incl. oh-my-zsh, completions, autosuggestions and syntax highlighting)
+* Dracula themes (ZSH, vim)
+* Vim (incl. Pathogen, nerdtree, terminus and Simplenote for vim)
+* Ranger file browser, Todoist CLI, thefuck, CLI tools for cloud management, and more
+* My personal dotfiles
 
 ## Install:
 * For Fedora:
