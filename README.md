@@ -19,3 +19,6 @@ bash -c "$(curl -fsSL https://raw.githubusercontent.com/garrettjj/dotfiles/maste
 
 ## Contributions:
 While this is a personal project, I'm more than happy to review feedback from other individuals on this matter. Feel free to submit pull requests and I'll review them appropriately.
+
+## Credit:
+While a dotfile repository isn't anything original, credit the idea and certain blocks of code goes to jldeen's [dotfiles](https://github.com/jldeen/dotfiles). 
