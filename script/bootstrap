@@ -146,4 +146,10 @@ echo
 $HOME/.dotfiles/terminal/gnome-terminal-profile import $HOME/.dotfiles/terminal/terminal.gnome
 
 echo
+echo "Installing mintty theme."
+echo
+git clone https://github.com/dracula/mintty.git ~/.dracula/mintty
+mv ~/.dracula/mintty/.minttyrc ~/.minttyrc
+
+echo
 echo "All done."
