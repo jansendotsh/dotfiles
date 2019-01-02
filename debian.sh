@@ -120,7 +120,7 @@ sudo apt-get -y install ranger
 echo
 echo "Installing tmux, pip, mtr, speedtest."
 echo
-sudo apt-get -y install python3-pip tmux mtr jq thefuck golang make
+sudo apt-get -y install python3-pip tmux mtr jq thefuck make
 sudo python3 -m pip install --upgrade pip
 sudo python3 -m pip install speedtest-cli
 
@@ -152,9 +152,16 @@ curl -s https://api.github.com/repos/peco/peco/releases/latest |
 # Golang install
 echo
 echo "Now installing golang and dependencies."
-mkdir -p $HOME/go/bin
-GOPATH=$HOME/go/ #temporary path fix
-PATH=$PATH:$GOPATH/bin #temporary path fix
+#mkdir -p $HOME/go/bin
+GOROOT=$HOME/go
+GOPATH=$GOROOT/bin #temporary path fix
+PATH=$PATH:$GOPATH #temporary path fix
+
+# Golang on Debian (Older version in repository)
+cd $HOME
+wget https://dl.google.com/go/go1.11.4.linux-amd64.tar.gz
+tar -xzf go*-amd64.tar.gz
+rm go*-amd64.tar.gz
 
 # Golang dep install
 go get github.com/golang/dep

@@ -152,9 +152,9 @@ curl -s https://api.github.com/repos/peco/peco/releases/latest |
 # Golang install
 echo
 echo "Now installing golang and dependencies."
-mkdir -p $HOME/go/bin
-GOPATH=$HOME/go/ #temporary path fix
-PATH=$PATH:$GOPATH/bin #temporary path fix
+GOROOT=$HOME/go
+GOPATH=$GOROOT/bin #temporary path fix
+PATH=$PATH:$GOPATH #temporary path fix
 
 # Golang dep install
 go get github.com/golang/dep

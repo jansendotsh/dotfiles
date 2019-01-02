@@ -149,7 +149,7 @@ echo
 echo "Installing mintty theme."
 echo
 git clone https://github.com/dracula/mintty.git ~/.dracula/mintty
-mv ~/.dracula/mintty/.minttyrc ~/.minttyrc
+mv $HOME/.dracula/mintty/dracula.minttyrc ~/.minttyrc
 
 echo
 echo "All done."
