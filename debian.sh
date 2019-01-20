@@ -4,7 +4,7 @@
 
 # Updating system cache
 echo "Updating system cache"
-dnf makecache
+sudo apt-get update
 
 # ZSH check
 which zsh > /dev/null 2>&1
@@ -15,13 +15,13 @@ else
 echo
 echo "ZSH is installing now."
 echo 
-sudo dnf -y install zsh
+sudo apt-get -y install zsh
 fi
 
 # Bash completion
 echo
 echo "Installing git and Bash completion."
-sudo dnf -y install git bash-completion vim
+sudo apt-get -y install git bash-completion vim
 
 echo
 echo "Configuring git completion."
@@ -114,13 +114,13 @@ git clone https://github.com/dracula/vim.git ~/.vim/bundle/dracula
 echo
 echo "Installing ranger."
 echo
-sudo dnf -y install ranger
+sudo apt-get -y install ranger
 
 # Installing CLI tools
 echo
 echo "Installing tmux, pip, mtr, speedtest."
 echo
-sudo dnf -y install python3-pip tmux mtr jq thefuck golang make util-linux-user
+sudo apt-get -y install python3-pip tmux mtr jq thefuck make
 sudo python3 -m pip install --upgrade pip
 sudo python3 -m pip install speedtest-cli
 
@@ -152,9 +152,16 @@ curl -s https://api.github.com/repos/peco/peco/releases/latest |
 # Golang install
 echo
 echo "Now installing golang and dependencies."
+#mkdir -p $HOME/go/bin
 GOROOT=$HOME/go
 GOPATH=$GOROOT/bin #temporary path fix
 PATH=$PATH:$GOPATH #temporary path fix
+
+# Golang on Debian (Older version in repository)
+cd $HOME
+wget https://dl.google.com/go/go1.11.4.linux-amd64.tar.gz
+tar -xzf go*-amd64.tar.gz
+rm go*-amd64.tar.gz
 
 # Golang dep install
 go get github.com/golang/dep
