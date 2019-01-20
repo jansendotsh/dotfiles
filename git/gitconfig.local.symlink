@@ -1,5 +1,7 @@
 [user]
         name = garrettjj
         email = garrett@jansen.sh
-[credential]
-	helper = credential.helper
+[credential "https://github.com"]
+	username = garrettjj
+[credential "https://git.jansen.sh"]
+	username = garrett
