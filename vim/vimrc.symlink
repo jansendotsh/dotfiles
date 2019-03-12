@@ -1,20 +1,13 @@
 execute pathogen#infect()
 syntax on
 filetype plugin indent on
-set number
-set termguicolors
 color dracula
+set termguicolors
+set number
 
-" SimpleNote
-let g:SimplenoteUsername = "garrett.jansen@gmail.com"
-let g:SimplenoteSingleWindow = 1
-map <C-l> :SimplenoteList<CR>
-
-" VimWiki
-let wiki_1 = {}
-let wiki_1.path = '/mnt/c/Users/janseng/Documents/vimwiki'
-let wiki_1.nested_syntaxes = {'python': 'python'}
-let g:vimwiki_list = [wiki_1]
+" Dracula settings
+let g:dracula_colorterm = 0
+let g:dracula_italic = 0
 
 " Markdown settings
 nnoremap <Space> za
