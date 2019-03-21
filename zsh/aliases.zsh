@@ -1,3 +1,6 @@
+# tmux fix
+alias tmux='env TERM=xterm-256color tmux'
+
 # SSH configuration
 alias ssh-start='eval $(ssh-agent); ssh-add -k ~/.ssh/id_rsa'
 alias ll='ls -larth'
@@ -17,3 +20,6 @@ alias linodes='linode-cli linodes list --format="id,label,ipv4"'
 
 # DigitalOcean
 alias droplets='doctl compute droplet list --format "ID,Name,PublicIPv4"'
+
+# LaTeX
+alias apatex='cp $HOME/latex/apa.tex $1'

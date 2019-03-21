@@ -83,6 +83,24 @@ echo "Now installing vim fugitive."
 echo
 git clone https://github.com/tpope/vim-fugitive.git ~/.vim/bundle/vim-fugitive
 
+# Vim-Ansible
+echo
+echo "Now installing vim-ansible."
+echo
+git clone https://github.com/pearofducks/ansible-vim ~/.vim/bundle/ansible-vim
+
+# Goyo-Vim Markdown Editing
+echo
+echo "Now install goyo-vim."
+echo
+git clone https://github.com/junegunn/goyo.vim.git ~/.vim/bundle/goyo.vim
+
+# Vimtex LaTeX editing
+echo
+echo "Now installing vimtex."
+echo
+git clone https://github.com/lervag/vimtex.git ~/.vim/bundle/vimtex
+
 # Nerdtree & Nerdtree git plugin
 echo
 echo "Installing Nerdtree and Nerdtree git plugin for vim."
@@ -95,14 +113,6 @@ echo
 echo "Installing terminus for vim."
 echo
 git clone https://github.com/wincent/terminus.git ~/.vim/bundle/terminus
-
-# Simplenote for vim
-echo
-echo "Installing Simplenote for vim."
-echo
-git clone https://github.com/mrtazz/simplenote.vim.git ~/.vim/bundle/simplenote.vim
-cd ~/.vim/bundle/simplenote.vim
-git submodule update --init
 
 # Dracula theme for vim
 echo
@@ -123,6 +133,14 @@ echo
 sudo dnf -y install python3-pip tmux mtr jq thefuck golang make util-linux-user
 sudo python3 -m pip install --upgrade pip
 sudo python3 -m pip install speedtest-cli
+
+# Installing LaTeX tools
+echo
+echo "Installing LaTeX tools"
+echo
+sudo dnf install texlive texlive-todonotes texlive-babel texlive-apa6 texlive-biblatex-apa latexmk biber mupdf
+git clone https://github.com/lervag/vimtex ~/.vim/bundle/vimtex
+git clone https://github.com/garrettjj/LaTeX-templates.git ~/latex
 
 # Pull down dotfiles
 echo
@@ -181,6 +199,9 @@ curl -s https://api.github.com/repos/digitalocean/doctl/releases/latest |
 	cut -d '"' -f 4 | 
 	wget -qi - -O - | 
 	tar -xz -C $HOME/.dotfiles/bin/ doctl 
+
+# rclone
+sudo dnf -y install rclone
 
 # Set default shell to ZSH
 chsh -s $(which zsh)

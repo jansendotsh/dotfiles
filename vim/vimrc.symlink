@@ -5,6 +5,12 @@ color dracula
 set termguicolors
 set number
 
+" tmux color escapes
+if &term =~# '^screen'
+    let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
+    let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
+endif
+
 " Dracula settings
 let g:dracula_colorterm = 0
 let g:dracula_italic = 0
