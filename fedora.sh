@@ -160,7 +160,7 @@ vim -u NONE -c "helptags vim-fugitive/doc" -c q
 # Peco install (for Todoist and other)
 echo
 echo "Now installing peco."
-mkdir $HOME/.dotfiles/bin
+#mkdir $HOME/.dotfiles/bin
 curl -s https://api.github.com/repos/peco/peco/releases/latest | 
 	grep "peco_linux_amd64" | 
 	cut -d '"' -f 4 | 
