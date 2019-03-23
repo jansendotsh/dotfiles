@@ -1,0 +1,15 @@
+#!/bin/bash
+
+# Save the current directory
+CWD=$PWD
+
+
+# Switch to LaTex directory and push updated bibliography
+printf 'Currently synchronizing your LaTeX bibliography...\n\n'
+cd $HOME/latex
+git add bibliography.bib
+git commit -m "Updating bibliography" &> /dev/null
+git push
+
+# Switch back to original directory
+cd $CWD
