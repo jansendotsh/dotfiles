@@ -61,7 +61,7 @@ set -sg escape-time 0
 bind -T copy-mode-vi y send-keys -X copy-pipe 'wl-copy'
 
 # wl-clipboard to create a shortcut for saving 
-bind y run "tmux save-buffer - | wl-copy"
+bind y run "tmux save-buffer - | wl-copy &> /dev/null"
 
 # Reload tmux config
 bind r source-file ~/.tmux.conf
