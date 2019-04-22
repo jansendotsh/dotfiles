@@ -58,7 +58,10 @@ bind -n S-Right next-window
 set -sg escape-time 0
 
 # Paste to clipboard
-bind -T copy-mode-vi y send-keys -X copy-pipe 'xclip -in -selection clipboard'
+bind -T copy-mode-vi y send-keys -X copy-pipe 'wl-copy'
+
+# wl-clipboard to create a shortcut for saving 
+bind y run "tmux save-buffer - | wl-copy"
 
 # Reload tmux config
 bind r source-file ~/.tmux.conf
