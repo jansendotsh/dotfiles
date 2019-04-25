@@ -20,6 +20,12 @@ alias linodes='linode-cli linodes list --format="id,label,ipv4"'
 
 # DigitalOcean
 alias droplets='doctl compute droplet list --format "ID,Name,PublicIPv4"'
+alias pdroplets='DIGITALOCEAN_CONTEXT=personal doctl compute droplet list --format "ID,Name,PublicIPv4"'
+alias wdroplets='DIGITALOCEAN_CONTEXT=work doctl compute droplet list --format "ID,Name,PublicIPv4"'
+alias tdroplets='DIGITALOCEAN_CONTEXT=team doctl compute droplet list --format "ID,Name,PublicIPv4"'
+alias pdoctl='DIGITALOCEAN_CONTEXT=personal doctl'
+alias wdoctl='DIGITALOCEAN_CONTEXT=work doctl'
+alias tdoctl='DIGITALOCEAN_CONTEXT=team doctl'
 
 # LaTeX
 alias apatex='cp $HOME/latex/apa.tex $1'
