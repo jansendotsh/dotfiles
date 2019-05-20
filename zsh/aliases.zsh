@@ -29,3 +29,6 @@ alias tdoctl='DIGITALOCEAN_CONTEXT=team doctl'
 
 # LaTeX
 alias apatex='cp $HOME/latex/apa.tex $1'
+
+# Todoist CLI
+alias todoist='todoist --color'
