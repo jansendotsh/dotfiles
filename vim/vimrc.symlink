@@ -28,4 +28,4 @@ map <C-n> :NERDTreeToggle<CR>
 let g:pymode_python = 'python3'
 
 " Write to clipboard
-command WL %w !wl-copy
+command WL %w !xclip -selection c 
