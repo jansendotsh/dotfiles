@@ -85,9 +85,9 @@ git clone https://github.com/tpope/vim-fugitive.git ~/.vim/bundle/vim-fugitive
 
 # Vim-Ansible
 echo
-echo "Now installing vim-ansible."
+echo "Now installing vim-polyglot."
 echo
-git clone https://github.com/pearofducks/ansible-vim ~/.vim/bundle/ansible-vim
+git clone https://github.com/sheerun/vim-polyglot.git ~/.vim/bundle/vim-polyglot
 
 # Goyo-Vim Markdown Editing
 echo

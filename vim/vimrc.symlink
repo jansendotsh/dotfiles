@@ -32,3 +32,8 @@ let g:pymode_python = 'python3'
 
 " Write to clipboard
 command WL %w !xclip -selection c 
+
+" LaTeX settings
+autocmd BufRead,BufNewFile *.tex setlocal spell
+map <C-b> :tabnew ~/latex/bibliography.bib<CR>
+let g:polyglot_disabled = ['latex']

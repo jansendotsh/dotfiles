@@ -6,10 +6,7 @@ alias ssh-start='eval $(ssh-agent); ssh-add -k ~/.ssh/id_rsa'
 alias ll='ls -larth'
 
 # Work aliases
-alias proxy='ssh -D 54322 janseng@ipmon25.mastercard'
-alias proxy2='ssh -D 54322 janseng@ipmon20.mastercard'
-alias devstg='ssh -D 54321 janseng@ipmon01.mastercard'
-alias tunnel='ssh $1 -l e082561 -p 2222 -o "ProxyCommand=nc -X 5 -x 127.0.0.1:54322 %h %p"'
+# Temporarily empty :)
 
 # Python settings
 alias python='python3'
@@ -20,12 +17,12 @@ alias linodes='linode-cli linodes list --format="id,label,ipv4"'
 
 # DigitalOcean
 alias droplets='doctl compute droplet list --format "ID,Name,PublicIPv4"'
-alias pdroplets='DIGITALOCEAN_CONTEXT=personal doctl compute droplet list --format "ID,Name,PublicIPv4"'
-alias wdroplets='DIGITALOCEAN_CONTEXT=work doctl compute droplet list --format "ID,Name,PublicIPv4"'
-alias tdroplets='DIGITALOCEAN_CONTEXT=team doctl compute droplet list --format "ID,Name,PublicIPv4"'
-alias pdoctl='DIGITALOCEAN_CONTEXT=personal doctl'
-alias wdoctl='DIGITALOCEAN_CONTEXT=work doctl'
-alias tdoctl='DIGITALOCEAN_CONTEXT=team doctl'
+alias pdroplets='doctl --context personal compute droplet list --format "ID,Name,PublicIPv4"'
+alias wdroplets='doctl --context work compute droplet list --format "ID,Name,PublicIPv4"'
+alias tdroplets='doctl --context team compute droplet list --format "ID,Name,PublicIPv4"'
+alias pdoctl='doctl --context personal'
+alias wdoctl='doctl --context work'
+alias tdoctl='doctl --context team'
 
 # LaTeX
 alias apatex='cp $HOME/latex/apa.tex $1'
