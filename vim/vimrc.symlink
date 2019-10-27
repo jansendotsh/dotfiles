@@ -20,6 +20,9 @@ nnoremap <Space> za
 map <F12> :Goyo<CR> :setlocal spell<CR> :SoftPencil<CR>
 autocmd BufRead,BufNewFile *.md setlocal spell
 autocmd BufRead,BufNewFile *.md SoftPencil
+autocmd! User GoyoEnter Limelight
+autocmd! User GoyoLeave Limelight!
+let g:limelight_default_coefficient = 0.5
 
 " NERDTree settings
 map <C-n> :NERDTreeToggle<CR>

@@ -91,9 +91,10 @@ git clone https://github.com/pearofducks/ansible-vim ~/.vim/bundle/ansible-vim
 
 # Goyo-Vim Markdown Editing
 echo
-echo "Now install goyo-vim."
+echo "Now install goyo-vim & limelight."
 echo
 git clone https://github.com/junegunn/goyo.vim.git ~/.vim/bundle/goyo.vim
+git clone https://github.com/junegunn/limelight.vim.git ~/.vim/limelight.vim
 
 # Vimtex LaTeX editing
 echo
