@@ -96,6 +96,7 @@ eval $(thefuck --alias)
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 export EDITOR=vim
+export NOTES_DIR=$HOME/Documents/Notes
 
 # GOLANG
 export GOPATH=$HOME/go
@@ -109,6 +110,7 @@ source "$GOPATH/src/github.com/sachaos/todoist/todoist_functions.sh"
 
 # Alias import
 source $HOME/.dotfiles/zsh/aliases.zsh
+source $HOME/.privatevars
 
 # ---------------------- MAKE PAINFULLY SLOW PASTE FAST ---------------------- #
 
