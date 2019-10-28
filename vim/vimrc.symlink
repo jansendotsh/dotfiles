@@ -21,6 +21,11 @@ map <F12> :Goyo<CR> :setlocal spell<CR> :SoftPencil<CR>
 autocmd BufRead,BufNewFile *.md setlocal spell
 autocmd BufRead,BufNewFile *.md SoftPencil
 
+set ignorecase
+command! -nargs=1 Ngrep vimgrep "<args>" $NOTES_DIR/**/*.md
+nnoremap <leader>[ :Ngrep 
+nnoremap <leader>] :copen<CR>
+
 " NERDTree settings
 map <C-n> :NERDTreeToggle<CR>
 
