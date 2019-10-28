@@ -25,7 +25,10 @@ alias wdoctl='doctl --context work'
 alias tdoctl='doctl --context team'
 
 # LaTeX
-alias apatex='cp $HOME/latex/apa.tex $1'
+alias apatex='cp $HOME/Git/templates/latex/apa.tex `date +%Y-%m-%d`-$1'
+
+# Markdown
+alias mdnote='cp $HOME/Git/templates/markdown/markdown.md `date +%Y-%m-%d`-$1'
 
 # Todoist CLI
 alias todoist='todoist --color'
