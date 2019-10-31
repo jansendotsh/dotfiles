@@ -18,6 +18,9 @@ let g:dracula_italic = 0
 " Markdown settings
 nnoremap <Space> za
 map <F12> :Goyo<CR> :setlocal spell<CR> :SoftPencil<CR>
+autocmd BufRead,BufNewFile *.txt set filetype=markdown
+autocmd BufRead,BufNewFile *.txt setlocal spell
+autocmd BufRead,BufNewFile *.txt SoftPencil
 autocmd BufRead,BufNewFile *.md setlocal spell
 autocmd BufRead,BufNewFile *.md SoftPencil
 autocmd! User GoyoEnter Limelight
