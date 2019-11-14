@@ -1,0 +1,5 @@
+#!/bin/bash
+
+for i in ./*.flac; do
+  < /dev/null ffmpeg -i "$i" -vsync 2 -ab 320k -map_metadata 0 -id3v2_version 3 "${i[@]/%flac/mp3}"
+done
