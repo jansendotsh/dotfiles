@@ -25,7 +25,7 @@ alias wdoctl='doctl --context work'
 alias tdoctl='doctl --context team'
 
 # LaTeX
-alias apatex='cp $HOME/Git/templates/latex/apa.tex $1'
+alias apatex='cp $HOME/Git/LaTeX-APA/apa.tex $1'
 
 # Todoist CLI
 alias todoist='todoist --color'
