@@ -1,7 +1,5 @@
 [user]
-        name = garrettjj
+        name = jansendotsh
         email = garrett@jansen.sh
 [credential "https://github.com"]
-	username = garrettjj
-[credential "https://git.jansen.sh"]
-	username = garrett
+	username = jansendotsh

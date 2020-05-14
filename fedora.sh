@@ -158,35 +158,6 @@ echo
 echo "Fixing some vim things."
 vim -u NONE -c "helptags vim-fugitive/doc" -c q 
 
-# Peco install (for Todoist and other)
-echo
-echo "Now installing peco."
-#mkdir $HOME/.dotfiles/bin
-curl -s https://api.github.com/repos/peco/peco/releases/latest | 
-	grep "peco_linux_amd64" | 
-	cut -d '"' -f 4 | 
-	wget -qi - -O - | 
-	tar -xz --strip-components=1 -C $HOME/.dotfiles/bin/ peco_linux_amd64/peco 
-
-# Golang install
-echo
-echo "Now installing golang and dependencies."
-GOROOT=$HOME/go
-GOPATH=$GOROOT/bin #temporary path fix
-PATH=$PATH:$GOPATH #temporary path fix
-
-# Golang dep install
-go get github.com/golang/dep
-cd $GOPATH/src/github.com/golang/dep
-go install ./...
-
-# Todoist CLI install
-echo
-echo "Now installing Todoist CLI."
-go get github.com/sachaos/todoist
-cd $GOPATH/src/github.com/sachaos/todoist 
-make install
-
 # Cloud admin tools
 echo
 echo "Now installing cloud CLI tools."
