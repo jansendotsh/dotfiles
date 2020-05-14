@@ -69,6 +69,10 @@ echo
 mkdir ~/.dracula
 git clone https://github.com/dracula/zsh.git ~/.dracula/zsh
 mv ~/.dracula/zsh/dracula.zsh-theme ~/.oh-my-zsh/custom/themes
+mv ~/.dracula/zsh/lib ~/.oh-my-zsh/custom/themes/
+
+# Create privatevars file
+touch ~/.privatevars
 
 # Vim
 echo

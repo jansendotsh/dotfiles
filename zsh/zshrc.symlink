@@ -96,17 +96,9 @@ eval $(thefuck --alias)
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 export EDITOR=vim
-export NOTES_DIR=$HOME/Documents/Notes
-
-# GOLANG
-export GOPATH=$HOME/go
-#export GOBIN=$GOPATH/bin
-#export GOROOT="/usr/lib/go-1.7" #Don't think this is necessary and it is prone to breakage
 
 # PATH
-export PATH=$PATH:$GOPATH/bin:~/.rbenv/bin:~/.dotfiles/bin
-
-source "$GOPATH/src/github.com/sachaos/todoist/todoist_functions.sh"
+export PATH=$PATH:~/.rbenv/bin:~/.dotfiles/bin
 
 # Alias import
 source $HOME/.dotfiles/zsh/aliases.zsh
