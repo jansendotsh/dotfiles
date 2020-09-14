@@ -1,4 +1,19 @@
-execute pathogen#infect()
+" vim-plug
+call plug#begin()
+Plug 'tpope/vim-fugitive'
+Plug 'sheerun/vim-polyglot'
+Plug 'junegunn/goyo.vim'
+Plug 'lervag/vimtex'
+Plug 'scrooloose/nerdtree'
+Plug 'xuyuanp/nerdtree-git-plugin'
+Plug 'wincent/terminus'
+Plug 'dracula/vim'
+Plug 'reedes/vim-pencil'
+Plug 'junegunn/limelight.vim'
+Plug 'rhysd/vim-grammarous'
+call plug#end()
+
+" syntax and theme
 syntax on
 filetype plugin indent on
 color dracula
@@ -45,3 +60,4 @@ command WL %w !xclip -selection c
 autocmd BufRead,BufNewFile *.tex setlocal spell
 map <C-b> :tabnew ~/latex/bibliography.bib<CR>
 let g:polyglot_disabled = ['latex']
+let g:tex_flavor = 'latex'

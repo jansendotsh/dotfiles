@@ -76,54 +76,10 @@ touch ~/.privatevars
 
 # Vim
 echo
-echo "Installing vim-pathogen."
+echo "Installing vim-plug."
 echo
-mkdir -p ~/.vim/autoload ~/.vim/bundle && \
-	curl -LSso ~/.vim/autoload/pathogen.vim https://tpo.pe/pathogen.vim
-
-# Vim Fugitive git plugin
-echo
-echo "Now installing vim fugitive."
-echo
-git clone https://github.com/tpope/vim-fugitive.git ~/.vim/bundle/vim-fugitive
-
-# Vim-Ansible
-echo
-echo "Now installing vim-polyglot."
-echo
-git clone https://github.com/sheerun/vim-polyglot.git ~/.vim/bundle/vim-polyglot
-
-# Goyo-Vim Markdown Editing
-echo
-echo "Now install goyo-vim & limelight."
-echo
-git clone https://github.com/junegunn/goyo.vim.git ~/.vim/bundle/goyo.vim
-git clone https://github.com/junegunn/limelight.vim.git ~/.vim/limelight.vim
-
-# Vimtex LaTeX editing
-echo
-echo "Now installing vimtex."
-echo
-git clone https://github.com/lervag/vimtex.git ~/.vim/bundle/vimtex
-
-# Nerdtree & Nerdtree git plugin
-echo
-echo "Installing Nerdtree and Nerdtree git plugin for vim."
-echo
-git clone https://github.com/scrooloose/nerdtree.git ~/.vim/bundle/nerdtree
-git clone https://github.com/Xuyuanp/nerdtree-git-plugin.git ~/.vim/bundle/nerdtree-git-plugin
-
-# Terminus for tmux/vim
-echo
-echo "Installing terminus for vim."
-echo
-git clone https://github.com/wincent/terminus.git ~/.vim/bundle/terminus
-
-# Dracula theme for vim
-echo
-echo "Installing Dracula theme for vim."
-echo
-git clone https://github.com/dracula/vim.git ~/.vim/bundle/dracula
+curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
+    https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 
 # Ranger for file management
 echo
