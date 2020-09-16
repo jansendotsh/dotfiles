@@ -55,6 +55,7 @@ let g:pymode_python = 'python3'
 
 " Write to clipboard
 command WL %w !xclip -selection c 
+command WK %call system('xclip -se c', @0)
 
 " LaTeX settings
 autocmd BufRead,BufNewFile *.tex setlocal spell
