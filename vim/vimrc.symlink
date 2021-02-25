@@ -1,3 +1,5 @@
+let g:polyglot_disabled = ['latex']
+
 " vim-plug
 call plug#begin()
 Plug 'tpope/vim-fugitive'
@@ -11,9 +13,12 @@ Plug 'dracula/vim'
 Plug 'reedes/vim-pencil'
 Plug 'junegunn/limelight.vim'
 Plug 'rhysd/vim-grammarous'
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+Plug 'junegunn/fzf.vim'
+Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && yarn install'  }
 call plug#end()
 
-" syntax and theme
+"execute pathogen#infect()
 syntax on
 filetype plugin indent on
 color dracula
@@ -41,6 +46,7 @@ autocmd BufRead,BufNewFile *.md SoftPencil
 autocmd! User GoyoEnter Limelight
 autocmd! User GoyoLeave Limelight!
 let g:limelight_default_coefficient = 0.5
+nmap <C-s> <Plug>MarkdownPreviewToggle
 
 set ignorecase
 command! -nargs=1 Ngrep vimgrep "<args>" $NOTES_DIR/**/*.md
@@ -59,6 +65,5 @@ command WK %call system('xclip -se c', @0)
 
 " LaTeX settings
 autocmd BufRead,BufNewFile *.tex setlocal spell
-map <C-b> :tabnew ~/latex/bibliography.bib<CR>
-let g:polyglot_disabled = ['latex']
+
 let g:tex_flavor = 'latex'

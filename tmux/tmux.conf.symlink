@@ -57,16 +57,10 @@ bind -n S-Right next-window
 # No delay for escape key press
 set -sg escape-time 0
 
-# Paste to clipboard
-bind -T copy-mode-vi y send-keys -X copy-pipe 'wl-copy'
-
-# wl-clipboard to create a shortcut for saving 
-bind y run "tmux save-buffer - | xclip -selection c &> /dev/null"
-
 # Reload tmux config
 bind r source-file ~/.tmux.conf
 
-bind t set status
+#bind t set status
 
 # if run as "tmux attach", create a session if one does not already exist
 new-session -n $HOST
@@ -86,10 +80,10 @@ set-option -g renumber-windows on
 set-window-option -g monitor-activity off
 
 # Split
-set-option -g pane-active-border-fg colour234
-set-option -g pane-active-border-bg default
-set-option -g pane-border-fg colour234
-set-option -g pane-border-bg default
+#set-option -g pane-active-border-fg colour234
+#set-option -g pane-active-border-bg default
+#set-option -g pane-border-fg colour234
+#set-option -g pane-border-bg default
 
 set -g status-left ''
 set -g status-right '#[fg=black,bg=magenta] %b %d %Y #[fg=black,bg=blue] %R '
@@ -97,3 +91,15 @@ set -g status-right-length 100
 set -g status-bg default
 setw -g window-status-format '#[fg=magenta,bg=black] #I #[fg=blue,bg=black] #W '
 setw -g window-status-current-format '#[fg=black,bg=blue] #I #[fg=black,bg=green] #W '
+
+# tmux-1password
+set -g @1password-subdomain 'gjansen'
+#set -g @1password-copy-to-clipboard 'on'
+
+# TPM plugins
+set -g @plugin 'tmux-plugins/tpm'
+set -g @plugin 'tmux-plugins/tmux-sensible'
+set -g @plugin 'tmux-plugins/tmux-yank'
+set -g @plugin 'yardnsm/tmux-1password'
+
+run '~/.tmux/plugins/tpm/tpm'
