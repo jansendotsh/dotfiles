@@ -118,6 +118,13 @@ echo
 echo "Fixing some vim things."
 vim -u NONE -c "helptags vim-fugitive/doc" -c q 
 
+# Install 1Password CLI
+echo
+echo "Installing 1Password CLI (op) v1.8.0"
+wget https://cache.agilebits.com/dist/1P/op/pkg/v1.8.0/op_linux_amd64_v1.8.0.zip -O op.zip
+unzip -j op.zip op -d $HOME/.dotfiles/bin/
+rm op.zip
+
 # Cloud admin tools
 echo
 echo "Now installing cloud CLI tools."
