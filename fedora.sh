@@ -116,7 +116,10 @@ $HOME/.dotfiles/script/bootstrap
 # Post dotfile-import vim necessity
 echo
 echo "Fixing some vim things."
+vim -u NONE -c "PlugInstall" -c q
 vim -u NONE -c "helptags vim-fugitive/doc" -c q 
+sudo dnf -y install cmake gcc-c++ make python3-devel
+python3 $HOME/.vim/plugged/youcompleteme/install.py --all
 
 # Install 1Password CLI
 echo
