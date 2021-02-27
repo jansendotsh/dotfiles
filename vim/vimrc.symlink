@@ -4,9 +4,11 @@ let g:polyglot_disabled = ['latex']
 call plug#begin()
 Plug 'tpope/vim-fugitive'
 Plug 'sheerun/vim-polyglot'
+Plug 'valloric/youcompleteme'
 Plug 'junegunn/goyo.vim'
 Plug 'lervag/vimtex'
 Plug 'scrooloose/nerdtree'
+Plug 'preservim/nerdcommenter'
 Plug 'xuyuanp/nerdtree-git-plugin'
 Plug 'wincent/terminus'
 Plug 'dracula/vim'
@@ -52,6 +54,10 @@ set ignorecase
 command! -nargs=1 Ngrep vimgrep "<args>" $NOTES_DIR/**/*.md
 nnoremap <leader>[ :Ngrep 
 nnoremap <leader>] :copen<CR>
+
+" NERDComment settings
+nnoremap <C-_> :call NERDComment(0,"toggle")<CR>
+vnoremap <C-_> :call NERDComment(0,"toggle")<CR>
 
 " NERDTree settings
 map <C-n> :NERDTreeToggle<CR>
