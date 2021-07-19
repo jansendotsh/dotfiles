@@ -58,9 +58,11 @@ fi
 echo
 echo "Installing ZSH plugins"
 echo
+sudo dnf -y install fzf
 git clone https://github.com/zsh-users/zsh-completions ~/.oh-my-zsh/custom/plugins/zsh-completions
 git clone https://github.com/zsh-users/zsh-autosuggestions ~/.zsh/zsh-autosuggestions
 git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ~/.zsh/zsh-syntax-highlighting
+
 
 # Dracula theme for ZSH
 echo
@@ -92,6 +94,7 @@ echo
 echo "Installing tmux, pip, mtr, speedtest."
 echo
 sudo dnf -y install python3-pip tmux mtr jq thefuck golang make util-linux-user
+git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 sudo python3 -m pip install --upgrade pip
 sudo python3 -m pip install speedtest-cli
 
@@ -116,6 +119,7 @@ $HOME/.dotfiles/script/bootstrap
 # Post dotfile-import vim necessity
 echo
 echo "Fixing some vim things."
+sudo dnf install -y yarnpkg npm
 vim -u NONE -c "PlugInstall" -c q
 vim -u NONE -c "helptags vim-fugitive/doc" -c q 
 sudo dnf -y install cmake gcc-c++ make python3-devel
