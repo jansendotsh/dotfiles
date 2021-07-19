@@ -96,7 +96,7 @@ eval $(thefuck --alias)
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
-export EDITOR=vim
+export EDITOR=vimx
 
 # PATH
 export PATH=$PATH:~/.rbenv/bin:~/.dotfiles/bin

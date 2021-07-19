@@ -21,7 +21,9 @@ fi
 # Bash completion
 echo
 echo "Installing git and Bash completion."
-sudo dnf -y install git bash-completion vim
+sudo dnf -y install git bash-completion vim-X11
+# alias vim='vimx'
+ln -s /usr/bin/vimx $HOME/.dotfiles/bin/vim
 
 echo
 echo "Configuring git completion."

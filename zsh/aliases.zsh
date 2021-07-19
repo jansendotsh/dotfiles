@@ -1,4 +1,5 @@
 # tmux fix
+alias vim='vimx'
 alias tmux='env TERM=xterm-256color tmux'
 
 # SSH configuration
