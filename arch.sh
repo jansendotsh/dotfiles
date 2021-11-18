@@ -103,7 +103,6 @@ echo "Installing LaTeX tools"
 echo
 sudo pacman -S --noconfirm texlive-most biber 
 git clone https://github.com/lervag/vimtex ~/.vim/bundle/vimtex
-git clone https://github.com/jansendotsh/LaTeX-templates.git ~/latex
 
 # Pull down dotfiles
 echo

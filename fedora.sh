@@ -106,7 +106,6 @@ echo "Installing LaTeX tools"
 echo
 sudo dnf -y install texlive texlive-todonotes texlive-babel texlive-apa6 texlive-biblatex-apa latexmk biber
 git clone https://github.com/lervag/vimtex ~/.vim/bundle/vimtex
-git clone https://github.com/jansendotsh/LaTeX-templates.git ~/latex
 
 # Pull down dotfiles
 echo
