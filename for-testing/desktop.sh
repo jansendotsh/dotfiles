@@ -8,4 +8,4 @@ sudo systemctl enable gdm
 sudo systemctl start gdm
 
 echo "access" | passwd vagrant --stdin
-echo 'bash -c "$(curl -fsSL https://raw.githubusercontent.com/garrettjj/dotfiles/master/fedora.sh)"' > ~/dotfile-install.sh
+echo 'bash -c "$(curl -fsSL https://raw.githubusercontent.com/jansendotsh/dotfiles/master/fedora.sh)"' > ~/dotfile-install.sh

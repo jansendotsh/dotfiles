@@ -17,7 +17,7 @@ The scope here is to create a singular script that can be run to set up a full t
 
 * For Fedora:
 ```
-bash -c "$(curl -fsSL https://raw.githubusercontent.com/garrettjj/dotfiles/master/fedora.sh)"
+bash -c "$(curl -fsSL https://raw.githubusercontent.com/jansendotsh/dotfiles/master/fedora.sh)"
 ```
 
 ## toDo

@@ -1,10 +1,10 @@
 #!/bin/bash
 
-# This is the dotfile placement script for a Fedora instance
+# This is the dotfile placement script for an Arch-based instance
 
-# Updating system cache
+# Updating system packages
 echo "Updating system cache"
-dnf makecache
+sudo pacman -Syu --noconfirm
 
 # ZSH check
 which zsh > /dev/null 2>&1
@@ -15,15 +15,13 @@ else
 echo
 echo "ZSH is installing now."
 echo 
-sudo dnf -y install zsh
+sudo pacman -S --noconfirm zsh 
 fi
 
 # Bash completion
 echo
 echo "Installing git and Bash completion."
-sudo dnf -y install git bash-completion vim-X11
-# alias vim='vimx'
-ln -s /usr/bin/vimx $HOME/.dotfiles/bin/vim
+sudo pacman -S --noconfirm git bash-completion gvim
 
 echo
 echo "Configuring git completion."
@@ -60,11 +58,10 @@ fi
 echo
 echo "Installing ZSH plugins"
 echo
-sudo dnf -y install fzf
+sudo pacman -S --noconfirm fzf
 git clone https://github.com/zsh-users/zsh-completions ~/.oh-my-zsh/custom/plugins/zsh-completions
 git clone https://github.com/zsh-users/zsh-autosuggestions ~/.zsh/zsh-autosuggestions
 git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ~/.zsh/zsh-syntax-highlighting
-
 
 # Dracula theme for ZSH
 echo
@@ -89,13 +86,13 @@ curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
 echo
 echo "Installing ranger."
 echo
-sudo dnf -y install ranger
+sudo pacman -S --noconfirm ranger
 
 # Installing CLI tools
 echo
 echo "Installing tmux, pip, mtr, speedtest."
 echo
-sudo dnf -y install python3-pip tmux mtr jq thefuck golang make util-linux-user
+sudo pacman -S --noconfirm python-pip tmux jq mtr thefuck go base-devel 
 git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 sudo python3 -m pip install --upgrade pip
 sudo python3 -m pip install speedtest-cli
@@ -104,7 +101,7 @@ sudo python3 -m pip install speedtest-cli
 echo
 echo "Installing LaTeX tools"
 echo
-sudo dnf -y install texlive texlive-todonotes texlive-babel texlive-apa6 texlive-biblatex-apa latexmk biber
+sudo pacman -S --noconfirm texlive-most biber 
 git clone https://github.com/lervag/vimtex ~/.vim/bundle/vimtex
 git clone https://github.com/jansendotsh/LaTeX-templates.git ~/latex
 
@@ -124,7 +121,7 @@ echo "Fixing some vim things."
 sudo dnf install -y yarnpkg npm
 vim -u NONE -c "PlugInstall" -c q
 vim -u NONE -c "helptags vim-fugitive/doc" -c q 
-sudo dnf -y install cmake gcc-c++ make python3-devel
+sudo pacman -S --noconfirm cmake 
 python3 $HOME/.vim/plugged/youcompleteme/install.py --all
 
 # Install 1Password CLI
@@ -145,8 +142,9 @@ curl -s https://api.github.com/repos/digitalocean/doctl/releases/latest |
 	wget -qi - -O - | 
 	tar -xz -C $HOME/.dotfiles/bin/ doctl 
 
+
 # rclone
-sudo dnf -y install rclone
+sudo pacman -S --noconfirm rclone
 
 # Set default shell to ZSH
 chsh -s $(which zsh)
@@ -156,6 +154,7 @@ chsh -s $(which zsh)
     else
         echo "Default shell not set successfully." >&2
 fi
+
 
 echo
 echo "All done!"
