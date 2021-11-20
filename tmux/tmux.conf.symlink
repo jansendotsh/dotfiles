@@ -80,26 +80,26 @@ set-option -g renumber-windows on
 set-window-option -g monitor-activity off
 
 # Split
-#set-option -g pane-active-border-fg colour234
-#set-option -g pane-active-border-bg default
-#set-option -g pane-border-fg colour234
-#set-option -g pane-border-bg default
-
 set -g status-left ''
-set -g status-right '#[fg=black,bg=magenta] %b %d %Y #[fg=black,bg=blue] %R '
+#set -g status-right '#[fg=black,bg=magenta] %b %d %Y #[fg=black,bg=blue] %R '
 set -g status-right-length 100
 set -g status-bg default
-setw -g window-status-format '#[fg=magenta,bg=black] #I #[fg=blue,bg=black] #W '
-setw -g window-status-current-format '#[fg=black,bg=blue] #I #[fg=black,bg=green] #W '
+#setw -g window-status-format '#[fg=magenta,bg=black] #I #[fg=blue,bg=black] #W '
+#setw -g window-status-current-format '#[fg=black,bg=blue] #I #[fg=black,bg=green] #W '
+
+# Dracula settings 
+set -g @dracula-show-flags true
+set -g @dracula-show-battery false
+set -g @dracula-plugins "cpu-usage ram-usage"
 
 # tmux-1password
 set -g @1password-subdomain 'gjansen'
-#set -g @1password-copy-to-clipboard 'on'
 
 # TPM plugins
 set -g @plugin 'tmux-plugins/tpm'
 set -g @plugin 'tmux-plugins/tmux-sensible'
 set -g @plugin 'tmux-plugins/tmux-yank'
-set -g @plugin 'yardnsm/tmux-1password'
+set -g @plugin 'yardnsm/tmux-1pasword'
+set -g @plugin 'dracula/tmux'
 
 run '~/.tmux/plugins/tpm/tpm'

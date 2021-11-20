@@ -55,8 +55,8 @@ let g:vimwiki_list = [{'path': '~/Documents/notes',
                       \ 'syntax': 'markdown', 'ext': '.md'}]
 
 " NERDComment settings
-nnoremap <C-_> :call NERDComment(0,"toggle")<CR>
-vnoremap <C-_> :call NERDComment(0,"toggle")<CR>
+nnoremap <C-_> :call nerdcommenter#Comment(0,"toggle")<CR>
+vnoremap <C-_> :call nerdcommenter#Comment(0,"toggle")<CR>
 
 " NERDTree settings
 map <C-n> :NERDTreeToggle<CR>
