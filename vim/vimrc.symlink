@@ -62,7 +62,8 @@ vnoremap <C-_> :call nerdcommenter#Comment(0,"toggle")<CR>
 map <C-n> :NERDTreeToggle<CR>
 
 " FZF Bind
-nnoremap <silent> <C-f> :Files<CR>
+nnoremap <silent> <C-f> :Ag<CR>
+nnoremap <silent> <C-k> :Rg<CR>
 
 " Python settings
 let g:pymode_python = 'python3'
