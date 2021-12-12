@@ -19,6 +19,7 @@ Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && yarn install'  }
 Plug 'vimwiki/vimwiki'
+Plug 'ryanoasis/vim-devicons'
 call plug#end()
 
 "execute pathogen#infect()
@@ -27,6 +28,7 @@ filetype plugin indent on
 color dracula
 set termguicolors
 set number
+set encoding=UTF-8
 
 " tmux color escapes
 if &term =~# '^screen'
@@ -51,8 +53,15 @@ autocmd! User GoyoLeave Limelight!
 let g:limelight_default_coefficient = 0.5
 nmap <C-s> <Plug>MarkdownPreviewToggle
 
-let g:vimwiki_list = [{'path': '~/Documents/notes',
+let g:vimwiki_list = [{'path': '~/Git/notes',
                       \ 'syntax': 'markdown', 'ext': '.md'}]
+
+command! Diary VimwikiDiaryIndex
+augroup vimwikigroup
+    autocmd!
+    " automatically update links on read diary
+    autocmd BufRead,BufNewFile diary.md VimwikiDiaryGenerateLinks
+augroup end
 
 " NERDComment settings
 nnoremap <C-_> :call nerdcommenter#Comment(0,"toggle")<CR>
@@ -70,7 +79,7 @@ let g:pymode_python = 'python3'
 
 " Write to clipboard
 command WL %w !xclip -selection c 
-command WK %call system('xclip -se c', @0)
+command WK %call system('xclip -selection c', @0)
 
 " LaTeX settings
 autocmd BufRead,BufNewFile *.tex setlocal spell
