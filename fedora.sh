@@ -104,8 +104,7 @@ sudo python3 -m pip install speedtest-cli
 echo
 echo "Installing LaTeX tools"
 echo
-sudo dnf -y install texlive texlive-todonotes texlive-babel texlive-apa6 texlive-biblatex-apa latexmk biber
-git clone https://github.com/lervag/vimtex ~/.vim/bundle/vimtex
+sudo dnf -y install texlive texlive-todonotes texlive-babel texlive-apa6 texlive-biblatex-apa texlive-fontawesome texlive-sourcesanspro texlive-tcolorbox :latexmk biber
 
 # Pull down dotfiles
 echo
