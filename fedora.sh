@@ -87,9 +87,12 @@ curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
 
 # Ranger for file management
 echo
-echo "Installing ranger."
+echo "Installing ranger and adding config."
 echo
 sudo dnf -y install ranger
+touch ~/.config/ranger/rc.conf
+echo """default_linemode devicons
+set draw_borders both""" > ~/.config/ranger/rc.conf
 
 # Installing CLI tools
 echo
