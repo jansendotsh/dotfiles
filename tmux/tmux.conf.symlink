@@ -2,6 +2,8 @@
 set -g prefix C-a
 unbind C-b
 bind C-a send-prefix
+set -g extended-keys on
+set -g extended-keys-format csi-u
 
 # 0 is too far from ` ;)
 set -g base-index 1
@@ -78,6 +80,11 @@ set-option -g visual-activity on
 set-option -g status-position bottom
 set-option -g renumber-windows on
 set-window-option -g monitor-activity off
+
+# Yazi images
+set -g allow-passthrough on
+set -ga update-environment TERM
+set -ga update-environment TERM_PROGRAM
 
 # Split
 set -g status-left ''
