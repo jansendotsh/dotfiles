@@ -49,6 +49,14 @@ setup_gitconfig () {
   fi
 }
 
+setup_secrets () {
+  if ! [ -f zsh/secrets.zsh ]
+  then
+    info 'setup secrets'
+    cp zsh/secrets.zsh.example zsh/secrets.zsh
+    success 'secrets'
+  fi
+}
 
 link_file () {
   local src=$1 dst=$2
@@ -137,19 +145,24 @@ install_dotfiles () {
   done
 }
 
+install_config () {
+  info 'installing XDG configs'
+
+  local overwrite_all=false backup_all=false skip_all=false
+
+  mkdir -p "$HOME/.config"
+
+  for src in "$DOTFILES_ROOT"/config/*
+  do
+    dst="$HOME/.config/$(basename "$src")"
+    link_file "$src" "$dst"
+  done
+}
+
 setup_gitconfig
+setup_secrets
 install_dotfiles
-
-echo
-echo "Installing GNOME Terminal profile."
-echo
-$HOME/.dotfiles/terminal/gnome-terminal-profile import $HOME/.dotfiles/terminal/terminal.gnome
-
-echo
-echo "Installing mintty theme."
-echo
-git clone https://github.com/dracula/mintty.git ~/.dracula/mintty
-mv $HOME/.dracula/mintty/dracula.minttyrc ~/.minttyrc
+install_config
 
 echo
 echo "All done."

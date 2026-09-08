@@ -1,161 +1,102 @@
 #!/bin/bash
 
-# This is the dotfile placement script for a Fedora instance
+# This is the workstation setup script for a Fedora instance.
+# It brings a fresh Fedora install to parity with the current workstation:
+# ZSH (Zim + Dracula), Ghostty, Neovim, tmux, yazi, zoxide, fzf, and cloud CLI tools.
 
-# Updating system cache
-echo "Updating system cache"
-dnf makecache
+# Updating system
+echo "Updating system."
+sudo dnf -y upgrade --refresh
 
-# ZSH check
-which zsh > /dev/null 2>&1
-if [[ $? -eq 0 ]] ; then
+# Core packages
 echo
-echo "ZSH is already installed."
-else
+echo "Installing core packages."
 echo
-echo "ZSH is installing now."
-echo 
-sudo dnf -y install zsh
+suod dnf install --nogpgcheck --repofrompath 'terra,https://repos.fyralabs.com/terra$releasever' terra-release
+sudo dnf -y install zsh git bash-completion util-linux-user \
+	neovim ghostty tmux fzf zoxide yazi \
+	doctl rclone jq mtr python3-pip wget unzip
+
+# CLI tools via pip
+echo
+echo "Installing speedtest-cli."
+echo
+sudo python3 -m pip install --break-system-packages speedtest-cli
+
+# Nerd font for terminal icons (yazi, devicons)
+echo
+echo "Installing SauceCodePro Nerd Font."
+echo
+wget -q https://github.com/ryanoasis/nerd-fonts/releases/latest/download/SauceCodePro.zip -O /tmp/SauceCodePro.zip
+sudo mkdir -p /usr/local/share/fonts/SourceCodePro
+sudo unzip -oq /tmp/SauceCodePro.zip -d /usr/local/share/fonts/SourceCodePro
+sudo fc-cache -f
+rm /tmp/SauceCodePro.zip
+
+# Oh My Posh
+echo
+echo "Installing Oh My Posh."
+echo
+curl -s https://ohmyposh.dev/install.sh | bash -s
+
+# tmux plugin manager
+echo
+echo "Installing tmux plugin manager."
+echo
+if [ ! -d ~/.tmux/plugins/tpm ] ; then
+	git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 fi
-
-# Bash completion
-echo
-echo "Installing git and Bash completion."
-sudo dnf -y install git bash-completion vim-X11
-# alias vim='vimx'
-ln -s /usr/bin/vimx $HOME/.dotfiles/bin/vim
-
-echo
-echo "Configuring git completion."
-GIT_VERSION=`git --version | awk '{print $3}'`
-URL="https://raw.github.com/git/git/v$GIT_VERSION/contrib/completion/git-completion.bash"
-echo
-echo "Downloading git-completion for git version: $GIT_VERSION."
-if ! curl "$URL" --silent --output "$HOME/.git-completion.bash"; then
-	echo "ERROR: Couldn't download completion script. Make sure you have a working internet connection." && exit 1
-fi
-
-# Installing oh-my-zsh
-if [ -d ~/.oh-my-zsh/ ] ; then
-echo
-echo "Oh-my-zsh is already installed."
-read -p "Would you like to update oh-my-zsh now?: " -n 1 -r
-echo ''
-    if [[ $REPLY =~ ^[Yy]$ ]] ; then
-    cd ~/.oh-my-zsh && git pull
-        if [[ $? -eq 0 ]]
-        then
-            echo "Update complete." && cd
-        else
-            echo "Update not complete." >&2 cd
-        fi
-    fi
-else
-echo "Oh-my-zsh not found, now installing oh-my-zsh."
-echo
-sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
-fi
-
-# ZSH plugins and ZSH plugin accessories
-echo
-echo "Installing ZSH plugins"
-echo
-sudo dnf -y install fzf
-git clone https://github.com/zsh-users/zsh-completions ~/.oh-my-zsh/custom/plugins/zsh-completions
-git clone https://github.com/zsh-users/zsh-autosuggestions ~/.zsh/zsh-autosuggestions
-git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ~/.zsh/zsh-syntax-highlighting
-
-
-# Dracula theme for ZSH
-echo
-echo "Installing ZSH theme."
-echo
-mkdir ~/.dracula
-git clone https://github.com/dracula/zsh.git ~/.dracula/zsh
-mv ~/.dracula/zsh/dracula.zsh-theme ~/.oh-my-zsh/custom/themes
-mv ~/.dracula/zsh/lib ~/.oh-my-zsh/custom/themes/
-
-# Create privatevars file
-touch ~/.privatevars
-
-# Vim
-echo
-echo "Installing vim-plug."
-echo
-curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
-    https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-
-# Ranger for file management
-echo
-echo "Installing ranger and adding config."
-echo
-sudo dnf -y install ranger
-touch ~/.config/ranger/rc.conf
-echo """default_linemode devicons
-set draw_borders both""" > ~/.config/ranger/rc.conf
-
-# Installing CLI tools
-echo
-echo "Installing tmux, pip, mtr, speedtest."
-echo
-sudo dnf -y install python3-pip tmux mtr jq thefuck golang make util-linux-user
-git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
-sudo python3 -m pip install --upgrade pip
-sudo python3 -m pip install speedtest-cli
-
-# Installing LaTeX tools
-echo
-echo "Installing LaTeX tools"
-echo
-sudo dnf -y install texlive texlive-todonotes texlive-babel texlive-apa6 texlive-biblatex-apa texlive-fontawesome texlive-sourcesanspro texlive-tcolorbox :latexmk biber
 
 # Pull down dotfiles
 echo
 echo "Now pulling down dotfiles."
 echo
-git clone https://github.com/jansendotsh/dotfiles.git ~/.dotfiles
+if [ ! -d ~/.dotfiles ] ; then
+	git clone https://github.com/jansendotsh/dotfiles.git ~/.dotfiles
+fi
 echo
 echo "Now linking dotfiles."
 echo
 $HOME/.dotfiles/script/bootstrap
 
-# Post dotfile-import vim necessity
+# tmux plugins
 echo
-echo "Fixing some vim things."
-sudo dnf install -y yarnpkg npm
-vim -u NONE -c "PlugInstall" -c q
-vim -u NONE -c "helptags vim-fugitive/doc" -c q 
-sudo dnf -y install cmake gcc-c++ make python3-devel
-python3 $HOME/.vim/plugged/youcompleteme/install.py --all
+echo "Installing tmux plugins."
+echo
+$HOME/.tmux/plugins/tpm/bin/install_plugins
+
+# Neovim plugins
+echo
+echo "Installing Neovim plugins."
+echo
+nvim --headless "+Lazy! restore" +qa
+
+# Zim modules
+echo
+echo "Installing Zim modules."
+echo
+zsh -ic 'exit'
 
 # Install 1Password CLI
 echo
 echo "Installing 1Password CLI (op) v1.12.3"
-wget https://cache.agilebits.com/dist/1P/op/pkg/v1.12.3/op_linux_amd64_v1.12.3.zip -O op.zip
-unzip -j op.zip op -d $HOME/.dotfiles/bin/
-rm op.zip
+wget -q https://cache.agilebits.com/dist/1P/op/pkg/v1.12.3/op_linux_amd64_v1.12.3.zip -O /tmp/op.zip
+unzip -j /tmp/op.zip op -d $HOME/.dotfiles/bin/
+rm /tmp/op.zip
 
-# Cloud admin tools
+# opencode
 echo
-echo "Now installing cloud CLI tools."
-
-# Doctl
-curl -s https://api.github.com/repos/digitalocean/doctl/releases/latest | 
-	grep "linux-amd64.tar.gz" | 
-	cut -d '"' -f 4 | 
-	wget -qi - -O - | 
-	tar -xz -C $HOME/.dotfiles/bin/ doctl 
-
-# rclone
-sudo dnf -y install rclone
+echo "Installing opencode."
+echo
+curl -fsSL https://opencode.ai/install | bash
 
 # Set default shell to ZSH
-chsh -s $(which zsh)
-    if [[ $? -eq 0 ]]
-    then
-        echo "Successfully set the default shell to ZSH."
-    else
-        echo "Default shell not set successfully." >&2
+sudo chsh -s $(which zsh) $USER
+if [[ $? -eq 0 ]]
+then
+	echo "Successfully set the default shell to ZSH."
+else
+	echo "Default shell not set successfully." >&2
 fi
 
 echo
