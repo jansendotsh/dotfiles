@@ -15,7 +15,7 @@ echo
 suod dnf install --nogpgcheck --repofrompath 'terra,https://repos.fyralabs.com/terra$releasever' terra-release
 sudo dnf -y install zsh git bash-completion util-linux-user \
 	neovim ghostty tmux fzf zoxide yazi \
-	doctl rclone jq mtr python3-pip wget unzip
+	doctl rclone jq mtr python3-pip wget unzip lazygit
 
 # CLI tools via pip
 echo
